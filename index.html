@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
+	<meta name="keyword" content="Music player, Music player application"/>
+	<meta name="description" content="A music player which makes you feel awesome and lights up your mood!"/>
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" href="icon-512.png">
+	<meta name="theme-color" content="#02061C">
+	<link rel="apple-touch-icon" sizes="192x192" href="icon-512.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+   <script src="https://kit.fontawesome.com/ccedc0fc77.js" crossorigin="anonymous"></script>
+   <title>Music player application</title>
+   <script>
+      //if browser support service worker
+      if ('serviceWorker' in navigator) {
+         navigator.serviceWorker.register('sw.js');
+      };
+   </script>
+</head>
+
+<body>
+
+   <div class="container">
+
+      <audio src="music/song1.mp3" id="audio"></audio>
+
+      <img class="back_img" src="Images/party1.webp" id="back_img" alt="background image"/>
+      <div class="img_overlay"></div>
+
+      <marquee scrollamount="5" direction="left" behavior="all" onmouseover="this.stop()" onmouseout="this.start()">
+
+         <div class="title" id="song_title"></div>
+      </marquee>
+
+      <span class="artist" id="song_artist">Arijit singh</span>
+
+      <div class="imgbox" id="imgBox">
+         <img class="image" id="img" src="Images/song1.webp" alt="music player image"/>
+      </div>
+
+      <div class="loopstautus" id="loopstatus"></div>
+
+      <div class="playing">
+         <!-- <span class="icon"><i class="fa-solid fa-music"></i></span> -->
+         <ul class="metronome" id="metronome">
+            <li style="--i:1"></li>
+            <li style="--i:2"></li>
+            <li style="--i:7"></li>
+            <li style="--i:4"></li>
+            <li style="--i:3"></li>
+            <li style="--i:5"></li>
+         </ul>
+         <span class="text">now playing</span>
+      </div>
+
+
+      <div class="slider_box">
+         <input type="range" min="0" max="1000" value="0" name="slider" id="slider">
+      </div>
+
+      <div class="timeline">
+         <span class="time" id="current">0:00</span>
+         <span class="time" id="duration">2:54</span>
+      </div>
+
+      <div class="control_box">
+         <span class="control loop" id="loop_song"><i class="fa-solid fa-repeat"></i></span>
+         <span class="control" id="prev"><i class="fa-sharp fa-solid fa-backward"></i></span>
+         <span class="control" id="play"><i class="fa-sharp fa-solid fa-circle-play" id="play_icon"></i></i></span>
+         <span class="control" id="next"><i class="fa-sharp fa-solid fa-forward"></i></span>
+         <span class="control more" id="like">🤍</span>
+      </div>
+
+      <div class="func_box">
+
+         <div class="volume">
+            <span class="icon"><i class="fa-solid fa-volume-low" id="vIcon"></i></span>
+            <input type="range" min="0" max="100" class="vSlider" id="vSlider">
+         </div>
+
+         <span class="functions" id="share"><i class="fa-solid fa-share"></i></span>
+         <span class="functions" id="delete"><i class="fa-solid fa-trash"></i></span>
+         <span class="functions" id="more"><i class="fa-solid fa-sliders-up">...</i></span>
+
+      </div>
+   </div>
+
+   <!-- javascript code links -->
+	<script type="text/javascript" src="songs.js" defer></script>
+	<script type="text/javascript" src="app.js" defer></script>
+
+</body>
+
+</html>
